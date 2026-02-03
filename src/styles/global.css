@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+@import 'tailwind-animations';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-bg-main: #050505;
+  --color-bg-secondary: #0f0f0f;
+  --color-bg-tertiary: #141414;
+  --color-text-main: #e0e0e0;
+  --color-text-muted: #888888;
+  --color-accent: #c4a059;
+  --color-accent-hover: #e0b866;
+
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+
+  --animate-ken-burns: kenBurns 24s infinite;
+  --animate-fade-in-up: fadeInUp 1s forwards;
+  --animate-bounce-slow: bounce 2s infinite;
+
+  @keyframes kenBurns {
+    0% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    5% {
+      opacity: 1;
+    }
+    33% {
+      opacity: 1;
+    }
+    38% {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Base styles */
+body {
+  @apply bg-bg-main text-text-main overflow-x-hidden font-sans antialiased;
+  line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-serif font-normal text-white;
+}
+
+/* Utilities */
+.btn-gold {
+  @apply text-accent border-accent relative inline-block cursor-pointer overflow-hidden border bg-transparent px-10 py-4 text-sm tracking-[2px] uppercase no-underline transition-all duration-300;
+}
+
+.btn-gold:hover {
+  @apply bg-accent text-black shadow-[0_0_20px_rgba(196,160,89,0.3)];
+}
+
+.fade-on-scroll {
+  @apply translate-y-7.5 opacity-0 transition-all duration-700 ease-out;
+}
+
+.fade-on-scroll.visible {
+  @apply translate-y-0 opacity-100;
+}
